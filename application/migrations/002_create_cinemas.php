@@ -19,8 +19,7 @@ class Migration_Create_cinemas extends CI_Migration
 					'type' => 'VARCHAR',
 					'constraint' => '100',),
 				'layout' => array(
-					'type' => 'INT',
-					'constraint' => 11,),
+					'type' => 'TEXT'),
 				));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('cinemas');
