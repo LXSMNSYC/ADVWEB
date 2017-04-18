@@ -26,6 +26,10 @@ class Migration_Create_movies extends CI_Migration
 				'genre' => array(
 					'type' => 'INT',
 					'constraint' => 11,),
+				'created' => array(
+					'type' => 'DATETIME',),
+				'modified' => array(
+					'type' => 'DATETIME',),
 						));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('movies');

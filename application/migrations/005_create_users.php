@@ -1,4 +1,4 @@
-<?php
+	<?php
 class Migration_Create_users extends CI_Migration
 {
 		public function __construct(){
@@ -21,6 +21,9 @@ class Migration_Create_users extends CI_Migration
 				'password' => array(
 					'type' => 'VARCHAR',
 					'constraint' => 255,),
+				'is_admin' => array(
+					'type' => 'INT',
+					'constraint' => 11,),
 				));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('users');

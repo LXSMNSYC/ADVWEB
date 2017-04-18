@@ -9,14 +9,14 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-12">
-				<form class="form-inline" >
+				<?php echo form_open('page/cinema_query_search', 'class="form-inline"'); ?>
 					<button class="btn btn-success" type="submit"><i class="material-icons">search</i></button>
-					<input class="form-control" type="text" placeholder="Search" style="width:80%;"><?php
+					<input class="form-control" type="text" name="search" placeholder="Search" style="width:80%;"><?php
 					if(isset($username)){
 						echo anchor('page/new_cinema', '<i class="material-icons">add</i>', 'class="btn pull-xs-right" role="button"');
 					}
 					?>
-				</form>
+				<?php echo form_close(); ?>
 			</div>
 		</div>
 		<div class="row">

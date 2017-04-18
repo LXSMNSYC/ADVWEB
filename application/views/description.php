@@ -14,7 +14,7 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="card">
-					<img style="width:100%;" src="<?php echo site_url("images/".$image);?>" alt="Movie 3">
+					<img style="width:100%;" src="<?php echo site_url("images/".$image);?>" alt="Movie Poster">
 				</div>
 			</div>
 			<div class="col-sm-9">
@@ -23,11 +23,9 @@
 						<h3 class="card-title"><?php echo $name;?>
 							<?php
 								if(isset($username)){
-							?>
-							<a class="btn btn-success pull-xs-right" role="button">
-								<i class="material-icons">edit</i>
-							</a>
-							<?php
+							
+									echo anchor('page/delete_movie/'.$id, '<i class="material-icons">delete</i>', 'class="btn pull-xs-right" role="button"');
+									echo anchor('page/edit_movie/'.$id, '<i class="material-icons">edit</i>', 'class="btn pull-xs-right" role="button"');
 								}
 							?>
 						</h3>
@@ -44,15 +42,16 @@
 				<h4>CINEMAS</h4>
 			</div>
 			<div class="col-sm-4">
-				<form class="form-inline">
-					<input class="form-control" type="text" placeholder="Search">
+				<?php echo form_open('page/desc_query_search'); ?>
+					<?php echo form_hidden('movie_id', $id); ?>
+					<input class="form-control" type="text" placeholder="Search" name="search">
 					<button class="btn btn-success" type="submit">Search</button>
 					<?php
-					if(isset($username)){
-						echo anchor('page/add_cinema', '<i class="material-icons">add</i>', 'class="btn pull-xs-right" role="button"');
-					}
+						if(isset($username)){
+							echo anchor('page/add_cinema/'.$id, '<i class="material-icons">add</i>', 'class="btn pull-xs-right" role="button"');
+						}
 					?>
-				</form>
+				<?php echo form_close(); ?>
 			</div>
 		</div>
 		<div class="row">
@@ -60,35 +59,19 @@
 				<div class="card">
 					<div class="card-block">
 						<div class="list-group">
-							<?php
-							echo anchor('page/reserve/'.$id.'/1',
-								'<h5 class="list-group-item-heading">MS CINEMA 1</h5>
-								<p class="list-group-item-text">
-									Location: MS MARILAO 2ND FLOOR<br>
-									Schedule: 10:00AM - 1:00PM
-								</p>',
-								'class="list-group-item list-group-item-action"'
-							);
-							?>
-							<?php
-							echo anchor('page/reserve/'.$id.'/1',
-								'<h5 class="list-group-item-heading">MS CINEMA 2</h5>
-								<p class="list-group-item-text">
-									Location: MS MARILAO 2ND FLOOR<br>
-									Schedule: 10:00AM - 1:00PM
-								</p>',
-								'class="list-group-item list-group-item-action"'
-							);
-							?>
-							<?php
-							echo anchor('page/reserve/'.$id.'/1',
-								'<h5 class="list-group-item-heading">MS CINEMA 3</h5>
-								<p class="list-group-item-text">
-									Location: MS MARILAO 2ND FLOOR<br>
-									Schedule: 10:00AM - 1:00PM
-								</p>',
-								'class="list-group-item list-group-item-action"'
-							);
+							<?php 
+								foreach($schedule as $sched){
+									echo anchor('page/reserve/'.$id.'/'.$sched->id,
+									'<h5 class="list-group-item-heading">'.$sched->cinema_name.'</h5>
+									<p class="list-group-item-text">
+										Location: '.$sched->cinema_location.'<br>
+										Schedule: '.$sched->time_start.' - '.$sched->time_end.', '.$sched->date_start.' - '.$sched->date_end.'
+									</p>',
+									'class="list-group-item list-group-item-action"'
+									
+									);
+								}
+							
 							?>
 						</div>
 					</div>

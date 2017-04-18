@@ -9,6 +9,9 @@
 		<?php
 			if(isset($username)){
 				echo anchor('page/reserve_table', 'Reserves', 'class="nav-item nav-link" ');
+				if($admin){
+					echo anchor('page/users', 'Users', 'class="nav-item nav-link" ');
+				}
 			}
 		?>
 		<?php

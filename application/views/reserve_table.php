@@ -7,46 +7,34 @@
 		<br>
 		<br>
 		<br>
-		<table class="table table-bordered">
+		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Name</th>
 					<th>Address</th>
 					<th>Picture</th>
+					<th>Movie</th>
 					<th>Cinema</th>
 					<th>Seats</th>
 					<th>Schedule</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
+			<?php foreach($reserve as $row){?>
 				<tr>
-					<td>1</td>
-					<td>Alexis</td>
-					<td>Coloong I, Valenzuela City</td>
-					<td>MyPhoto.png</td>
-					<td>MS Marilao 1</td>
-					<td>5</td>
-					<td>10:00 - 12:00 PM</td>
+					<td><?php echo $row->id; ?></td>
+					<td><?php echo $row->name; ?></td>
+					<td><?php echo $row->address; ?></td>
+					<td><img src="<?php echo site_url("images/".$row->image); ?>"></td>
+					<td><?php echo $movies[$row->movie]; ?></td>
+					<td><?php echo $cinemas[$row->cinema]; ?></td>
+					<td><?php echo $row->seats; ?></td>
+					<td><?php echo $schedule[$row->schedule]; ?></td>
+					<td><?php echo anchor('page/delete_reserve/'.$row->id, '<i class="material-icons">delete</i>', 'class="btn btn-primary"'); ?></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Fatima</td>
-					<td>Palasan, Valenzuela City</td>
-					<td>MyPhoto.png</td>
-					<td>MS Marilao 2</td>
-					<td>2</td>
-					<td>10:00 - 12:00 PM</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Edel Urrutia</td>
-					<td>Malinta, Valenzuela City</td>
-					<td>MyPhoto.png</td>
-					<td>MS Marilao 3</td>
-					<td>12</td>
-					<td>10:00 - 12:00 PM</td>
-				</tr>
+			<?php } ?>
 			</tbody>
 		</table>
 	</div>

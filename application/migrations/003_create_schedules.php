@@ -18,6 +18,11 @@ class Migration_Create_schedules extends CI_Migration
 				'cinema' => array(
 					'type' => 'INT',
 					'constraint' => 11,),
+				'cinema_name' => array(
+					'type' => 'VARCHAR',
+					'constraint' => 256,),
+				'cinema_location' => array(
+					'type' => 'TEXT',),
 				'price' => array(
 					'type' => 'DECIMAL',
 					'constraint' => '8,2',),
@@ -29,6 +34,10 @@ class Migration_Create_schedules extends CI_Migration
 					'type' => 'DATE',),
 				'date_end' => array(
 					'type' => 'DATE',),
+				'created' => array(
+					'type' => 'DATETIME',),
+				'modified' => array(
+					'type' => 'DATETIME',),
 				));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('schedules');

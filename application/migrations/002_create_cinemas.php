@@ -20,6 +20,10 @@ class Migration_Create_cinemas extends CI_Migration
 					'constraint' => '100',),
 				'layout' => array(
 					'type' => 'TEXT'),
+				'created' => array(
+					'type' => 'DATETIME',),
+				'modified' => array(
+					'type' => 'DATETIME',),
 				));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('cinemas');

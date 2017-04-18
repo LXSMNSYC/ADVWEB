@@ -15,6 +15,9 @@ class Migration_Create_reserves extends CI_Migration
 				'name' => array(
 					'type' => 'VARCHAR',
 					'constraint' => 100,),
+				'address' => array(
+					'type' => 'VARCHAR',
+					'constraint' => 100,),
 				'image' => array(
 					'type' => 'TEXT',),
 				'movie' => array(
@@ -26,6 +29,13 @@ class Migration_Create_reserves extends CI_Migration
 				'seats' => array(
 					'type' => 'INT',
 					'constraint' => 11,),
+				'schedule' => array(
+					'type' => 'INT',
+					'constraint' => 11,),
+				'created' => array(
+					'type' => 'DATETIME',),
+				'modified' => array(
+					'type' => 'DATETIME',),
 				));
 			$this->dbforge->add_key('id', TRUE);
 			$this->dbforge->create_table('reserves');

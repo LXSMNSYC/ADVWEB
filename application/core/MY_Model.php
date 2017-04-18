@@ -59,8 +59,17 @@ class MY_Model extends CI_Model
 			}
 			return $id;
 		}
-
-		public function delete(){}
-
+		public function delete($id){
+			$filter = $this->_primary_filter;
+			$id = $filter($id);	
+			if(!$id){
+				return false;
+			}
+			else{
+				$this->db->where($this->_primary_key, $id);
+				$this->db->limit(1);
+				$this->db->delete($this->_table_name);
+			}
+		}
 	}
 ?>

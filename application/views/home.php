@@ -29,24 +29,38 @@
 				</div>
 				<div class="card-block" style="background-color: <?php echo $color; ?>;">
 				<?php
+					$count = 0;
 					$movies=$g['movies'];
 					foreach($movies as $m){
 						$mid = $m->id;
 						$image = $m->image;
+						if($count == 0){
 				?>
+							<div class="row">
+				<?php 
+						}	
+						$count++;
+				?>
+				
 				<div class="col-lg-3">
-					<a href="<?php echo site_url('page/description/'.$mid); ?>">
+					<a href="<?php echo 'page/description/'.$mid; // site_url('page/description/'.$mid); ?>">
 						<div class="card" style="width:100%;">
 							<img class="card-img-top" style="width:100%;" src="<?php echo site_url("images/".$image);?>" alt="Movie Poster">
 						</div>
 					</a>
 				</div>
+				<?php 
+				if($count == 4 || $count == $g['max']){
+					$count = 0;
+				?>
+							</div>
 				<?php
+						}
 					}
 				?>
 				</div>
 				<div class="card-block">
-					<a href="#" class="btn btn-primary" style="color: <?php echo $color; ?>;">See More</a>
+					<a href="page/movies/<?php echo $id; ?>" class="btn btn-primary" style="color: <?php echo $color; ?>;">See More</a>
 				</div>
 			</div>
 		</div>

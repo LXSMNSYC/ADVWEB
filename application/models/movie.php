@@ -16,9 +16,27 @@ class Movie extends MY_Model {
 			'label' => 'Movie Description',
 			'rules' => 'trim|required'
 		),
-		'photo' => array(
-			'field' => 'photo',
-			'label' => 'Movie Poster',
+		'rating' => array(
+			'field' => 'rating',
+			'label' => 'Movie Rating',
+			'rules' => 'trim|required'
+		),
+		'genre' => array(
+			'field' => 'genre',
+			'label' => 'Movie Genre',
+			'rules' => 'trim|required|callback_check_add_movie'
+		)
+	);
+	
+		public $rules2 = array(
+		'name' => array(
+			'field' => 'name',
+			'label' => 'Cinema Name',
+			'rules' => 'trim|required'
+		),
+		'desc' => array(
+			'field' => 'desc',
+			'label' => 'Movie Description',
 			'rules' => 'trim|required'
 		),
 		'rating' => array(
@@ -29,7 +47,7 @@ class Movie extends MY_Model {
 		'genre' => array(
 			'field' => 'genre',
 			'label' => 'Movie Genre',
-			'rules' => 'trim|required|callback_check_add_movie'
+			'rules' => 'trim|required|callback_check_edit_movie'
 		)
 	);
 	protected $_timestamps = true;
